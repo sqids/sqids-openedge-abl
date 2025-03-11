@@ -1,6 +1,6 @@
-# [Sqids OpenEdge ABL](https://sqids.org)
+# [Sqids OpenEdge ABL](https://sqids.org/openedge-abl)
 
-[Sqids](https://sqids.org) (*pronounced "squids"*) is a small library that lets you **generate unique IDs from numbers**. It's good for link shortening, fast & URL-safe ID generation and decoding back into numbers for quicker database lookups.
+[Sqids](https://sqids.org/openedge-abl) (*pronounced "squids"*) is a small library that lets you **generate unique IDs from numbers**. It's good for link shortening, fast & URL-safe ID generation and decoding back into numbers for quicker database lookups.
 
 Features:
 
@@ -27,11 +27,11 @@ Not good for:
 
 ## 🚀 Getting started
 
-Version: OpenEdge 11.7.15, 12.x
+Version: [OpenEdge](https://www.progress.com/openedge) 11.7.15, 12.x
 
-Depends on the OpenEdge.Core library (you need to add OpenEdge.Core.pl to your PROPATH).
+Depends on the `OpenEdge.Core` library (you need to add `OpenEdge.Core.pl` to your `PROPATH`).
 
-Usage: add the library folders to PROPATH. Alternatively, compile the modules and assemble them into a PL-file (e.g., Sqids.pl), then place it in your PROPATH.
+Usage: add the library folders to `PROPATH`. Alternatively, compile the modules and assemble them into a PL-file (e.g., `Sqids.pl`), then place it in your `PROPATH`.
 
 ## 👩‍💻 Examples
 
