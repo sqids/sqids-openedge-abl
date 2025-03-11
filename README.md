@@ -79,6 +79,7 @@ numbers =  sqids:Decode(id). // [1, 2, 3]
 Randomize IDs by providing a custom alphabet:
 
 ```abl
+DEFINE VARIABLE sqids   AS Sqids     NO-UNDO.
 DEFINE VARIABLE numbers AS INTEGER   EXTENT 3 NO-UNDO.
 DEFINE VARIABLE id      AS CHARACTER NO-UNDO.
 
@@ -96,6 +97,7 @@ numbers =  sqids:Decode(id). // [1, 2, 3]
 Prevent specific words from appearing anywhere in the auto-generated IDs:
 
 ```abl
+DEFINE VARIABLE sqids      AS Sqids     NO-UNDO.
 DEFINE VARIABLE numbers    AS INTEGER   EXTENT 3 NO-UNDO.
 DEFINE VARIABLE id         AS CHARACTER NO-UNDO.
 DEFINE VARIABLE cBlackList AS CHARACTER EXTENT 1 NO-UNDO INITIAL ['86Rf07'].
