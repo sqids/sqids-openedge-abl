@@ -1,6 +1,6 @@
-# Sqids OpenEdge ABL
+# [Sqids OpenEdge ABL](https://sqids.org)
 
-[Sqids](https://sqids.org/abl) (*pronounced "squids"*) is a small library that lets you **generate unique IDs from numbers**. It's good for link shortening, fast & URL-safe ID generation and decoding back into numbers for quicker database lookups.
+[Sqids](https://sqids.org) (*pronounced "squids"*) is a small library that lets you **generate unique IDs from numbers**. It's good for link shortening, fast & URL-safe ID generation and decoding back into numbers for quicker database lookups.
 
 Features:
 
