@@ -27,6 +27,7 @@ Not good for:
 
 ## 🚀 Getting started
 
+Version: OpenEdge 11.7.15, 12.x
 
 
 ## 👩‍💻 Examples
