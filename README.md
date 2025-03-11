@@ -29,6 +29,9 @@ Not good for:
 
 Version: OpenEdge 11.7.15, 12.x
 
+Depends on the OpenEdge.Core library (you need to add OpenEdge.Core.pl to your PROPATH).
+
+Usage: add the library folders to PROPATH. Alternatively, compile the modules and assemble them into a PL-file (e.g., Sqids.pl), then place it in your PROPATH.
 
 ## 👩‍💻 Examples
 
