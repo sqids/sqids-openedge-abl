@@ -1,0 +1,17 @@
+{ 
+    "options": { 
+        "output": { 
+            "fileName": "results", 
+            "format": "xml" 
+        }, 
+        "quitOnEnd": true, 
+        "writeLog": true, 
+        "showErrorMessage": true, 
+        "throwError": false 
+    }, 
+    "tests": [ 
+        { 
+            "test": "AllTests.cls"
+        } 
+    ] 
+}
