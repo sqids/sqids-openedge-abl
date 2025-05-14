@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="Sqids" default="build" basedir=".">
+	<taskdef resource="PCT.properties"/>
+	<typedef resource="types.properties"/>
+	<taskdef resource="extras115.properties"/>
+	<property environment="env"/>
+	<property name="DLC" value="${env.DLC}"/>
+	<property name="src.dir" location="${basedir}/src"/>
+	<property name="tests.dir" location="${basedir}/tests"/>
+	<property name="build.dir" location="${basedir}/rcode"/>
+	<property name="docs.dir" location="${basedir}/docs"/>
+	<property name="html.dir" location="${basedir}/html_docs"/>
+	<property name="preprocess.dir" location="${basedir}/preprocess"/>
+	<property name="PL.file" location="${basedir}/rcode/Sqids.pl"/>
+	<DlcHome value="${DLC}"/>
+
+	<target name="build" depends="clean" description="Builds source files">
+		<mkdir dir="${build.dir}"/>
+		<echo>compiling library...</echo>
+		<PCTCompile destDir="${build.dir}" noParse="true" preprocessDir="${preprocess.dir}">
+			<fileset dir="${src.dir}" includes="**/*.cls"/>
+			<propath>
+				<pathelement location="${src.dir}"/>
+				<pathelement location="${DLC}/tty/OpenEdge.Core.pl"/>
+			</propath>
+		</PCTCompile>
+		<PCTCompile destDir="${tests.dir}" noParse="true">
+			<fileset dir="${tests.dir}" includes="**/*.cls,**/*.p"/>
+			<propath>
+				<pathelement location="${build.dir}"/>
+				<pathelement location="${tests.dir}"/>
+				<pathelement location="${DLC}/tty/ablunit.pl"/>
+				<pathelement location="${DLC}/tty/OpenEdge.Core.pl"/>
+			</propath>
+		</PCTCompile>
+		<echo>ABLUnit test...</echo>
+		<ABLUnit haltOnFailure="true" writeLog="true">
+			<fileset dir="${tests.dir}" includes="**/*.p, **/*.cls"/>
+			<propath>
+				<pathelement location="${tests.dir}"/>
+				<pathelement location="${src.dir}"/>
+				<pathelement location="${DLC}/tty/ablunit.pl"/>
+				<pathelement location="${DLC}/tty/OpenEdge.Core.pl"/>
+			</propath>
+			<!--<Profiler enabled="true" outputDir="profiler" coverage="true" />-->
+		</ABLUnit>
+		<echo>packaging library...</echo>
+		<PCTLibrary destfile="${PL.file}">
+			<fileset dir="${build.dir}">
+				<include name="**/*.r"/>
+			</fileset>
+		</PCTLibrary>
+<!--		<ClassDocumentation destDir="${docs.dir}">
+			<fileset dir="${preprocess.dir}" includes="**/*.cls"/>
+		</ClassDocumentation>
+		<HTMLDocumentation sourceDir="${docs.dir}" destDir="${html.dir}"/>-->
+		<delete includeemptydirs="true">
+			<fileset dir="${tests.dir}" includes="**/*.r"/>
+			<fileset dir="${preprocess.dir}"/>
+			<fileset dir="${docs.dir}"/>
+		</delete>
+		<echo>Build successful!</echo>
+	</target>
+	<target name="clean" description="Removes all temporary files">
+		<delete includeemptydirs="true" failonerror="false">
+			<fileset dir="${tests.dir}" includes="**/*.r"/>
+			<fileset dir="${preprocess.dir}"/>
+			<fileset dir="${docs.dir}"/>
+			<fileset dir="${html.dir}"/>
+		</delete>
+		<delete file="${PL.file}"/>
+		<delete includeemptydirs="true">
+			<fileset dir="${build.dir}">
+				<include name="**/*"/>
+				<exclude name=".gitignore"/>
+			</fileset>
+		</delete>
+	</target>
+</project>
